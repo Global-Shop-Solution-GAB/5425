@@ -1,0 +1,448 @@
+Program.Sub.ScreenSU.Start
+Gui.F_Country_Code_Main..Create
+Gui.F_Country_Code_Main..Caption("Maintain Allowed Country Code")
+Gui.F_Country_Code_Main..Size(4140,10950)
+Gui.F_Country_Code_Main..MinX(0)
+Gui.F_Country_Code_Main..MinY(0)
+Gui.F_Country_Code_Main..Position(0,0)
+Gui.F_Country_Code_Main..BackColor(-2147483633)
+Gui.F_Country_Code_Main..MaxButton(False)
+Gui.F_Country_Code_Main..MinButton(False)
+Gui.F_Country_Code_Main..MousePointer(0)
+Gui.F_Country_Code_Main..Sizeable(False)
+Gui.F_Country_Code_Main..Event(UnLoad,F_Country_Code_Main_UnLoad)
+Gui.F_Country_Code_Main.GsGcCountryCodes.Create(GsGridControl)
+Gui.F_Country_Code_Main.GsGcCountryCodes.Size(3735,8385)
+Gui.F_Country_Code_Main.GsGcCountryCodes.Position(105,1485)
+Gui.F_Country_Code_Main.GsGcCountryCodes.Event(RowCellClick,GsGcCountryCodes_RowCellClick)
+Gui.F_Country_Code_Main.frmInput.Create(Frame)
+Gui.F_Country_Code_Main.frmInput.Size(3750,1335)
+Gui.F_Country_Code_Main.frmInput.Position(90,90)
+Gui.F_Country_Code_Main.lblCountry.Create(Label,"Country",True,840,255,0,105,285,True,0,"Arial",8,-2147483633,0)
+Gui.F_Country_Code_Main.lblCountry.Parent("frmInput")
+Gui.F_Country_Code_Main.txtCountry.Create(TextBox,"",True,2340,300,0,105,510,True,0,"Arial",8,-2147483643,1)
+Gui.F_Country_Code_Main.txtCountry.Parent("frmInput")
+Gui.F_Country_Code_Main.txtCode.Create(TextBox,"",True,1080,300,0,2580,510,True,0,"Arial",8,-2147483643,1)
+Gui.F_Country_Code_Main.txtCode.Parent("frmInput")
+Gui.F_Country_Code_Main.txtCode.MaxLength(2)
+Gui.F_Country_Code_Main.lblCode.Create(Label,"Code",True,840,255,0,2595,285,True,0,"Arial",8,-2147483633,0)
+Gui.F_Country_Code_Main.lblCode.Parent("frmInput")
+Gui.F_Country_Code_Main.cmdSave.Create(Button)
+Gui.F_Country_Code_Main.cmdSave.Size(1095,375)
+Gui.F_Country_Code_Main.cmdSave.Position(1365,900)
+Gui.F_Country_Code_Main.cmdSave.Parent("frmInput")
+Gui.F_Country_Code_Main.cmdSave.Caption("Save")
+Gui.F_Country_Code_Main.cmdSave.Event(Click,cmdSave_Click)
+Gui.F_Country_Code_Main.cmdNew.Create(Button)
+Gui.F_Country_Code_Main.cmdNew.Size(1095,375)
+Gui.F_Country_Code_Main.cmdNew.Position(2580,900)
+Gui.F_Country_Code_Main.cmdNew.Parent("frmInput")
+Gui.F_Country_Code_Main.cmdNew.Caption("New")
+Gui.F_Country_Code_Main.cmdNew.Event(Click,cmdNew_Click)
+Gui.F_Country_Code_Main.cmdDelete.Create(Button)
+Gui.F_Country_Code_Main.cmdDelete.Size(1095,375)
+Gui.F_Country_Code_Main.cmdDelete.Position(75,900)
+Gui.F_Country_Code_Main.cmdDelete.Parent("frmInput")
+Gui.F_Country_Code_Main.cmdDelete.Caption("Delete")
+Gui.F_Country_Code_Main.cmdDelete.Event(Click,cmdDelete_Click)
+Gui.F_Country_Code_Main.cmdUpload.Create(Button)
+Gui.F_Country_Code_Main.cmdUpload.Size(855,375)
+Gui.F_Country_Code_Main.cmdUpload.Position(2985,9930)
+Gui.F_Country_Code_Main.cmdUpload.Caption("Upload")
+Gui.F_Country_Code_Main.cmdUpload.Event(Click,cmdUpload_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+v.Local.bRet.Declare
+f.Intrinsic.Control.Try
+	f.Intrinsic.Control.SelectCase(v.Caller.Hook)
+	'populate hook
+	f.Intrinsic.Control.Case(14350)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.GAB-BTN-1, "HIDE", 1)
+			f.Intrinsic.Variable.SetProperty("GAB-BTN-1", "PL", 236)
+			f.Intrinsic.Variable.SetProperty("GAB-BTN-1", "PT", 204)
+			f.Intrinsic.Variable.SetProperty("GAB-BTN-1", "PH", 15)
+			f.Intrinsic.Variable.SetProperty("GAB-BTN-1", "PW", 15)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.GAB-BTN-2, "HIDE", 1)
+			f.Intrinsic.Variable.SetProperty("GAB-BTN-2", "PL", 534)
+			f.Intrinsic.Variable.SetProperty("GAB-BTN-2", "PT", 204)
+			f.Intrinsic.Variable.SetProperty("GAB-BTN-2", "PH", 15)
+			f.Intrinsic.Variable.SetProperty("GAB-BTN-2", "PW", 15)	
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000022, "Lock", 1)
+			v.Passed.000123.Set("Created By:")
+			f.Intrinsic.Control.If(v.Caller.Switches, =, "N")
+				v.Passed.000022.Set(v.Caller.User)
+			f.Intrinsic.Control.EndIf
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000038, "Lock", 1)
+			v.Passed.000116.Set("Last Saved By:")
+	f.Intrinsic.Control.Case(14381)
+		f.Intrinsic.Control.If(v.Passed.000055, =, "Y")
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000017, "Lock", 1)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000018, "Lock", 1)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.GAB-BTN-1, "HIDE", 0)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.GAB-BTN-1, "LOCK", 0)
+			v.Passed.GAB-BTN-1.Set("^")
+		f.Intrinsic.Control.ElseIf(v.Passed.000055, =, "N")
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000017, "Lock", 0)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000018, "Lock", 0)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.GAB-BTN-1, "HIDE", 1)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Case(14382)
+		f.Intrinsic.Control.If(v.Passed.000057, =, "Y")
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000047, "Lock", 1)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000054, "Lock", 1)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.GAB-BTN-2, "HIDE", 0)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.GAB-BTN-2, "LOCK", 0)
+			v.Passed.GAB-BTN-2.Set("^")
+		f.Intrinsic.Control.ElseIf(v.Passed.000057, =, "N")
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000047, "Lock", 0)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000054, "Lock", 0)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.GAB-BTN-2, "HIDE", 1)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Case(14369)
+		f.Intrinsic.Control.CallSub(launchCodeBrowser)
+	f.Intrinsic.Control.Case(14371)
+		f.Intrinsic.Control.CallSub(launchCodeBrowser)
+	f.Intrinsic.Control.Case(14384)
+		v.Passed.000038.Set(v.Caller.User)
+		f.Intrinsic.Control.CallSub(checkIfInt)
+'*******************************************************************************
+	'add ship to lines populate
+	f.Intrinsic.Control.Case(14410)
+		v.Passed.000203.Set("Test")
+	'script 3 button
+	f.Intrinsic.Control.Case(14442)	
+	Function.Intrinsic.Debug.InvokeDebugger
+	Function.Intrinsic.Debug.Stop
+	
+		f.Intrinsic.Control.If(v.Passed.000054.Trim, =, "Y")
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000011, "Lock", 1)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000033, "Lock", 1)
+		f.Intrinsic.Control.Else
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000011, "Lock", 0)
+			f.Intrinsic.UI.ChangeCallerProperty(v.Passed.000033, "Lock", 0)
+		f.Intrinsic.Control.EndIf
+	'int add ship to checkbox
+	f.Intrinsic.Control.Case(14440)		
+	Function.Intrinsic.Debug.InvokeDebugger
+	Function.Intrinsic.Debug.Stop
+	
+		f.Intrinsic.Control.CallSub(launchCodeBrowser)
+'	'country
+'	v.Passed.000011
+'	'county
+'	v.Passed.000033
+	
+'**************************************************************************
+'Prospects
+	f.Intrinsic.Control.Case(29810)
+		'f.Intrinsic.UI.ChangeCallerProperty(v.Passed.PPSTOPT_000022, "Lock", 1)
+		f.Intrinsic.UI.ChangeCallerProperty(v.Passed.PPSTOPT_000002, "Lock", 1)
+		'f.Intrinsic.UI.ChangeCallerProperty(v.Passed.PPSTOPT_000002, "Lock", 1)
+		
+		f.Intrinsic.Control.If(v.Caller.Switches, =, "N")
+			v.Passed.PPSTOPT_000022.Set(v.Caller.User)
+			V.Passed.000201.Set("TEST")
+			F.Intrinsic.UI.Msgbox(v.passed.PPSTOPT_000022.)
+			F.Intrinsic.UI.Msgbox(V.Passed.000201.NoChange)
+			v.passed.PPSTOPT_000022.set("TEST")
+		f.Intrinsic.Control.EndIf
+		v.Passed.PPSTOPT_000123.Set("Created By:")
+		
+		v.Passed.PPSTOPT_000001.Set("Last Saved By:")
+		v.Passed.PPSTOPT_000002.Set(v.Caller.User)
+		
+		v.Passed.000203.Set("Country Codes")
+		
+	f.Intrinsic.Control.Case(29840)
+		f.Intrinsic.Control.CallSub(launchCodeBrowser)
+	f.Intrinsic.Control.CaseElse
+		f.Intrinsic.Control.CallSub(codeMaintenance)
+	f.Intrinsic.Control.EndSelect
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+
+Program.Sub.Main.End
+
+Program.Sub.ErrorMsg.Start
+v.Local.sError.Declare
+'Generic Error message.
+f.Intrinsic.String.Build("Project GCG_5425_Custom_Country_Code.g2u {0}{0}Subroutine: {1}{0}Error: {2} with Description: {3}", v.Ambient.NewLine, v.Args.CurrentSub, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+Program.Sub.ErrorMsg.End
+
+Program.Sub.loadCountries.Start
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!con.OpenCompanyConnection
+		f.Data.DataTable.CreateFromSQL("countryCodeDT", "con", "Select * from GCG_5425_VALID_CODES order by country asc", true)
+	f.ODBC.Connection!con.Close
+f.Intrinsic.Control.Catch
+	f.ODBC.Connection!con.Close
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.loadCountries.End
+
+Program.Sub.formatGridView.Start
+gui.F_Country_Code_Main.GsGcCountryCodes.AddGridviewFromDatatable("countryCodeGV", "countryCodeDT")
+
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Last_Added", "Visible", false)
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Added_By", "Visible", false)		
+
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Country", "HeaderFontBold", true)
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Code", "HeaderFontBold", true)		
+
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Country", "HeaderHAlignment", near)
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Code", "HeaderHAlignment", near)	
+
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Country", "CellHAlignment", near)
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Code", "CellHAlignment", center)	
+
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Country", "HeaderHAlignment", near)
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Code", "HeaderHAlignment", center)	
+
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Country", "ReadOnly", true)
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Code", "ReadOnly", true)
+
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Country", "AllowEdit", false)
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Code", "AllowEdit", false)
+
+'gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Country", "Width", 200)
+gui.F_Country_Code_Main.GsGcCountryCodes.SetColumnProperty("countryCodeGV", "Code", "Width", 25)
+
+gui.F_Country_Code_Main.GsGcCountryCodes.MainView("countryCodeGV")
+Program.Sub.formatGridView.End
+
+Program.Sub.inputBoxes.Start
+gui.F_Country_Code_Main.txtCountry.Enabled(v.Args.bNew)
+gui.F_Country_Code_Main.txtCode.Enabled(v.Args.bNew)
+Program.Sub.inputBoxes.End
+
+Program.Sub.cmdNew_Click.Start
+gui.F_Country_Code_Main.cmdDelete.Enabled(False)
+f.Intrinsic.Control.CallSub(inputBoxes, bNew, true)
+gui.F_Country_Code_Main.txtCountry.SetFocus
+gui.F_Country_Code_Main.frmInput.Caption("New Country and ISO-ALPHA 2 Code")
+Program.Sub.cmdNew_Click.End
+
+Program.Sub.cmdDelete_Click.Start
+v.Local.sSQL.Declare
+v.Local.sPart.Declare
+v.Local.sCode.Declare
+
+v.Local.sPart.Set(v.Screen.F_Country_Code_Main!txtCountry.Text!FIeldValTrim)
+v.Local.sCode.Set(v.Screen.F_Country_Code_Main!txtCode.Text!FieldValTrim)
+
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!con.OpenCompanyConnection
+		f.Intrinsic.String.Build("Select * from GCG_5425_VALID_CODES where country = '{0}'", v.Local.sPart.PSQLFriendly, v.Local.sSQL)
+		f.Data.DataTable.CreateFromSQL("countryDT", "con", v.Local.sSQL)
+	f.ODBC.Connection!con.Close	
+	
+	f.Intrinsic.Control.If(v.DataTable.countryDT.RowCount, =, 1)
+		f.Intrinsic.String.Build("Delete From GCG_5425_VALID_CODES where country = '{0}'", v.Local.sPart.PSQLFriendly, v.Local.sSQL)
+		f.ODBC.Connection!con.OpenCompanyConnection
+			f.ODBC.Connection!con.Execute(v.Local.sSQL)
+		f.ODBC.Connection!con.Close
+		f.Intrinsic.Control.CallSub(refreshGV)
+	f.Intrinsic.Control.EndIf
+	
+	f.Data.DataTable.Close("countryDT")
+f.Intrinsic.Control.Catch
+	f.ODBC.Connection!con.Close
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdDelete_Click.End
+
+Program.Sub.cmdSave_Click.Start
+v.Local.sSQL.Declare
+v.Local.sPart.Declare
+v.Local.sCode.Declare
+
+v.Local.sPart.Set(v.Screen.F_Country_Code_Main!txtCountry.Text!FIeldValTrim)
+v.Local.sCode.Set(v.Screen.F_Country_Code_Main!txtCode.Text!FieldValTrim)
+f.Intrinsic.Control.Try
+	f.Intrinsic.Control.If(v.Screen.F_Country_Code_Main!txtCountry.Text!FieldValTrim, =, "")
+		f.Intrinsic.UI.Msgbox("Please enter a Country")
+	f.Intrinsic.Control.ElseIf(v.Screen.F_Country_Code_Main!txtCode.Text!FieldValTrim, =, "")
+		f.Intrinsic.UI.Msgbox("Please enter an ISO-ALPHA 2 Country Code")
+	f.Intrinsic.Control.Else
+		f.ODBC.Connection!con.OpenCompanyConnection
+			
+			f.Intrinsic.String.Build("Select * from GCG_5425_VALID_CODES where country = '{0}'", v.Local.sPart.PSQLFriendly, v.Local.sSQL)
+			f.Data.DataTable.CreateFromSQL("countryDT", "con", v.Local.sSQL)
+		f.ODBC.Connection!con.Close	
+		f.Intrinsic.Control.If(v.DataTable.countryDT.RowCount, >, 0)
+			f.Intrinsic.UI.Msgbox("This Country already exists in the system")
+		f.Intrinsic.Control.Else
+			f.ODBC.Connection!con.OpenCompanyConnection
+				f.Intrinsic.String.Build("Insert into GCG_5425_VALID_CODES (Country, Code, Last_Added, Added_By) values ('{0}', '{1}', NOW(), '{2}')", v.Local.sPart.PSQLFriendly, v.Local.sCode.PSQLFriendly, v.Caller.User, v.Local.sSQL)
+				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+			f.ODBC.Connection!con.Close			
+			f.Intrinsic.Control.CallSub(clearTxtBoxes)
+			f.Intrinsic.Control.CallSub(inputBoxes, bNew, false)
+			gui.F_Country_Code_Main.cmdDelete.Enabled(True)
+			gui.F_Country_Code_Main.cmdNew.SetFocus
+			f.Intrinsic.Control.CallSub(refreshGV)
+		f.Intrinsic.Control.EndIf
+		f.Data.DataTable.Close("countryDT")
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.ODBC.Connection!con.Close
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdSave_Click.End
+
+Program.Sub.clearTxtBoxes.Start
+gui.F_Country_Code_Main.txtCountry.Text("")
+gui.F_Country_Code_Main.txtCode.Text("")
+Program.Sub.clearTxtBoxes.End
+
+Program.Sub.GsGcCountryCodes_RowCellClick.Start
+v.Local.sCountry.Declare
+v.Local.sCode.Declare
+f.Intrinsic.Control.Try
+	f.Intrinsic.Control.CallSub(inputBoxes, bNew, false)
+	gui.F_Country_Code_Main.frmInput.Caption("Delete Authorized Country")
+	
+	gui.F_Country_Code_Main.GsGcCountryCodes.GetCellValue("countryCodeGV", 0, v.Args.rowIndex, v.Local.sCountry)
+	gui.F_Country_Code_Main.GsGcCountryCodes.GetCellValue("countryCodeGV", 1, v.Args.rowIndex, v.Local.sCode)
+	
+	gui.F_Country_Code_Main.cmdDelete.Enabled(true)
+	gui.F_Country_Code_Main.txtCountry.Text(v.Local.sCountry)
+	gui.F_Country_Code_Main.txtCode.Text(v.Local.sCode)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.GsGcCountryCodes_RowCellClick.End
+
+Program.Sub.refreshGV.Start
+f.Data.DataTable.Close("countryCodeDT")
+f.Intrinsic.Control.CallSub(loadCountries)
+f.Intrinsic.Control.CallSub(formatGridView)
+f.Intrinsic.Control.CallSub(inputBoxes, bNew, false)
+gui.F_Country_Code_Main.cmdDelete.Enabled(False)
+Program.Sub.refreshGV.End
+
+Program.Sub.codeMaintenance.Start
+f.Intrinsic.Control.CallSub(loadCountries)
+f.Intrinsic.Control.CallSub(formatGridView)
+f.Intrinsic.Control.CallSub(inputBoxes, bNew, false)
+gui.F_Country_Code_Main.cmdDelete.Enabled(False)
+gui.F_Country_Code_Main..Show
+Program.Sub.codeMaintenance.End
+
+Program.Sub.F_Country_Code_Main_UnLoad.Start
+f.Intrinsic.Control.End
+Program.Sub.F_Country_Code_Main_UnLoad.End
+
+Program.Sub.launchCodeBrowser.Start
+v.Local.sRet.Declare
+f.Intrinsic.Control.Try
+	f.ODBC.Connection!con.OpenCompanyConnection
+		f.Intrinsic.UI.Browser("ISO-ALPHA 2 Codes", "con", "Select country, code from gcg_5425_Valid_Codes order by Country", "Country*!*Code","50*!*10", v.Local.sRet)
+	f.ODBC.Connection!con.Close
+	f.Intrinsic.Control.If(v.Local.sRet, !=, "***CANCEL***")
+		f.Intrinsic.String.Split(v.Local.sRet, "*!*", v.Local.sRet)
+		f.Intrinsic.Control.If(v.Caller.Hook, =, 14369)
+			v.Passed.000017.Set(v.Local.sRet(1))
+			'v.Passed.000018.Set(v.Local.sRet(1))
+		f.Intrinsic.Control.ElseIf(v.Caller.Hook, =, 14371)
+			v.Passed.000047.Set(v.Local.sRet(1))
+			'v.Passed.000054.Set(v.Local.sRet(1))
+		f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.Control.If(v.Caller.Hook, =, 29840)
+			f.Intrinsic.Control.If(v.Passed.000055, =, "1")
+				v.Passed.000017.Set(v.Local.sRet(1))
+				'v.Passed.000018.Set(v.Local.sRet(1))
+			f.Intrinsic.Control.EndIf
+			
+			f.Intrinsic.Control.If(v.Passed.000057, =, "1")
+				v.Passed.000047.Set(v.Local.sRet(1))
+				'v.Passed.000054.Set(v.Local.sRet(1))
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.Control.If(v.Caller.Hook, =, 14442)
+			f.Intrinsic.Control.If(v.Passed.000054, =, "Y")
+				'v.Passed.000011.Set(v.Local.sRet(0))
+				v.Passed.000033.Set(v.Local.sRet(1))
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+	
+f.Intrinsic.Control.Catch
+	f.ODBC.Connection!con.Close
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.launchCodeBrowser.End
+
+Program.Sub.checkIfInt.Start
+f.Intrinsic.Control.Try
+	f.Intrinsic.Control.If(v.Passed.000055, =, "Y")
+		f.Intrinsic.Control.If(v.Passed.000017, =, "")
+		f.Intrinsic.Control.AndIf(v.Passed.000018, =,"")
+			f.Intrinsic.UI.Msgbox("Select a valid country for the billing address")
+			v.Passed.777777.Set(1)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Passed.000057, =, "Y")
+		f.Intrinsic.Control.If(v.Passed.000047, =, "")
+		f.Intrinsic.Control.AndIf(v.Passed.000054, =,"")
+			f.Intrinsic.UI.Msgbox("Select a valid country for the shipping address")
+			v.Passed.777777.Set(1)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.checkIfInt.End
+
+Program.Sub.lastSavedUser.Start
+v.Passed.000038.Set(v.Caller.User)
+Program.Sub.lastSavedUser.End
+
+Program.Sub.cmdUpload_Click.Start
+v.Local.sFile.Declare
+v.Local.sData.Declare
+v.Local.sSQL.Declare
+v.Local.sRows.Declare
+v.Local.sCol.Declare
+v.Local.sCountry.Declare
+v.Local.sCode.Declare
+v.Local.iCnt.Declare
+f.Intrinsic.Control.Try
+	f.Intrinsic.UI.ShowOpenFileDialog("", "csv|*.csv", v.Local.sFile)
+	f.Intrinsic.Control.If(v.Local.sFile, !=, "***CANCEL***")
+	'f.Intrinsic.File.File2String(v.Local.sFile, v.Local.sData)
+	'f.Intrinsic.String.Split(v.Local.sData, v.Ambient.NewLine, v.Local.sRows)
+		
+		f.Automation.MSExcel.ReadSpreadsheet(v.Local.sFile, 2, , v.Local.sData)
+		f.Intrinsic.String.Split(v.Local.sData, "$!$", v.Local.sRows)
+	
+		f.ODBC.Connection!con.OpenCompanyConnection
+			f.Intrinsic.Control.For(v.Local.iCnt, 0, v.Local.sRows.UBound, 1)
+				f.Intrinsic.String.Split(v.Local.sRows(v.Local.iCnt), "*!*", v.Local.sCol)
+				'f.Intrinsic.String.SplitCSV(v.Local.sRows(v.Local.iCnt), v.Local.sCol)
+				v.Local.sCountry.Set(v.Local.sCol(0))
+				v.Local.sCode.Set(v.Local.sCol(1))
+				f.Intrinsic.String.Build("Delete From GCG_5425_VALID_CODES where country = '{0}'", v.Local.sCountry.PSQLFriendly, v.Local.sSQL)
+				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+				f.Intrinsic.String.Build("Insert into GCG_5425_VALID_CODES (Country, Code, Last_Added, Added_By) values ('{0}', '{1}', NOW(), '{2}')", v.Local.sCountry.PSQLFriendly, v.Local.sCode.PSQLFriendly, v.Caller.User, v.Local.sSQL)
+				f.ODBC.Connection!con.Execute(v.Local.sSQL)
+			f.Intrinsic.Control.Next(v.Local.iCnt)
+		f.ODBC.Connection!con.Close
+		
+		f.Intrinsic.Control.CallSub(refreshGV)
+		f.Intrinsic.UI.Msgbox("Upload Compleated.")
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdUpload_Click.End
